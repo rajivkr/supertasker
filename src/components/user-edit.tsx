@@ -1,15 +1,19 @@
 import { ChangeEventHandler } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../features/user-slice';
 
 type UserEditProps = {
   user: User;
 };
 
 const UserEdit = ({ user }: UserEditProps) => {
+  const dispatch = useDispatch();
   const id = (p: keyof User) => `edit-user-${user.id}-${p}`;
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
     console.log('Put an action here to create a user. 😝', { name, value });
+    dispatch(updateUser(user));
   };
 
   return (

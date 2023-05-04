@@ -1,8 +1,9 @@
 import { ComponentPropsWithoutRef, useId } from 'react';
+import { useAppSelector } from '../hooks';
 
 const UserSelect = (props: ComponentPropsWithoutRef<'select'>) => {
   const id = useId();
-  const users: User[] = [];
+  const users = useAppSelector((state) => state.users.entities);
 
   return (
     <div>

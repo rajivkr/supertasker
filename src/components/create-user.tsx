@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { addUser } from '../features/user-slice';
+import { useAppDispatch } from '../hooks';
 
 const CreateUser = () => {
   const [realName, setRealName] = useState('');
   const [alterEgo, setAlterEgo] = useState('');
+  const dispatch = useAppDispatch();
 
   return (
     <form
@@ -34,7 +37,19 @@ const CreateUser = () => {
         />
       </label>
 
-      <button type="submit">Create User</button>
+      <button
+        type="submit"
+        onClick={() =>
+          dispatch(
+            addUser({
+              realName,
+              alterEgo,
+            }),
+          )
+        }
+      >
+        Create User
+      </button>
     </form>
   );
 };
