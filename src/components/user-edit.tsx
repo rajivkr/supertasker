@@ -12,8 +12,13 @@ const UserEdit = ({ user }: UserEditProps) => {
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
-    console.log('Put an action here to create a user. 😝', { name, value });
-    dispatch(updateUser(user));
+    dispatch(
+      updateUser(
+        name === 'realName'
+          ? { ...user, realName: value }
+          : { ...user, alterEgo: value },
+      ),
+    );
   };
 
   return (

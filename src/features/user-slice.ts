@@ -27,7 +27,7 @@ const usersSlice = createSlice({
       );
       state.entities.splice(index, 1);
     },
-    updateUser: (state, action: PayloadAction<DraftUser>) => {
+    updateUser: (state, action: PayloadAction<User>) => {
       const index = state.entities.findIndex(
         (obj) => obj.id === action.payload.id,
       );
